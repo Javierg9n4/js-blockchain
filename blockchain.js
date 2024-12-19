@@ -36,7 +36,7 @@ class Blockchain {
     }
     return { hash, nonce };
   }
-
+  //
   createNewTransaction(amount, sender, recipient) {
     const newTransaction = {
       amount,
