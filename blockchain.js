@@ -5,7 +5,7 @@ class Blockchain {
     this.chain = [this.createGenesisBlock()];
     this.pendingTransactions = [];
   }
-  //
+
   createGenesisBlock() {
     return {
       index: 1,
