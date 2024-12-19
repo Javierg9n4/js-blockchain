@@ -1,10 +1,12 @@
 const SHA256 = require("sha256");
 
+//Añade comentario
+
 class Blockchain {
   constructor() {
     this.chain = [this.createGenesisBlock()];
     this.pendingTransactions = [];
-  };
+  }
 
   createGenesisBlock() {
     return {
@@ -15,11 +17,11 @@ class Blockchain {
       hash: "hash",
       previousBlockHash: "previousBlockHash",
     };
-  };
+  }
 
   getLastBlock() {
-    return this.chain[this.chain.length - 1]
-  };
+    return this.chain[this.chain.length - 1];
+  }
 
   generateHash(previousBlockHash, timestamp, pendingTransactions) {
     let hash = "";
@@ -29,13 +31,13 @@ class Blockchain {
       nonce++;
       hash = SHA256(
         previousBlockHash +
-        timestamp +
-        JSON.stringify(pendingTransactions) +
-        nonce
-        ).toString();
+          timestamp +
+          JSON.stringify(pendingTransactions) +
+          nonce
+      ).toString();
     }
-    return {hash, nonce};
-  };
+    return { hash, nonce };
+  }
 
   createNewTransaction(amount, sender, recipient) {
     const newTransaction = {
@@ -44,7 +46,7 @@ class Blockchain {
       recipient,
     };
     this.pendingTransactions.push(newTransaction);
-  };
+  }
 
   createNewBLock() {
     const timestamp = Date.now();
@@ -57,7 +59,7 @@ class Blockchain {
     );
 
     const newBlock = {
-      index: this.chain.length +1,
+      index: this.chain.length + 1,
       timestamp,
       transactions,
       nonce: generateHash.nonce,
@@ -69,8 +71,7 @@ class Blockchain {
     this.chain.push(newBlock);
 
     return newBlock;
-  };
-};
+  }
+}
 
 module.exports = Blockchain;
-
