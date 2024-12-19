@@ -1,7 +1,5 @@
 const SHA256 = require("sha256");
-
-//Añade comentario
-
+//
 class Blockchain {
   constructor() {
     this.chain = [this.createGenesisBlock()];
